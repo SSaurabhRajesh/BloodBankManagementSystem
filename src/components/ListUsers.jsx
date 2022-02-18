@@ -1,5 +1,7 @@
-import React, { Component, useDebugValue } from 'react';
+import React, { Component } from 'react';
 import UserService from '../services/UserService';
+
+
 
 class ListUsers extends Component {
   constructor(props){
@@ -7,26 +9,28 @@ class ListUsers extends Component {
     this.state={
       user:[]
     }
-    this.addUser=this.addUser.bind(this);
+    // this.addUser=this.addUser.bind(this); 
+    
   }
   componentDidMount(){
     UserService.getUsers().then((res) => {
       this.setState({user:res.data});
     });
   }
+  
 
-  addUser(){
-    this.props.history.push('/page');
-  }
+//  addUser(){
+//    this.props.history.push('/adduser');
+//   }
 
   render() {
     return (
       <div>
+         <div>
+                 <a href="CreateUserComponent"><button type="button" className="btn btn-primary">Add User</button></a>
+                 </div>
        <h2 className='text-center'>Users List</h2>
                <div className='row'>
-               <div>
-                 <button type="button" className="btn btn-primary" onClick={this.addUser}>Add User</button>
-                 </div>
                  <table className='table table-striped table-bordered'>
                    <thead>
                      <tr>
@@ -40,7 +44,9 @@ class ListUsers extends Component {
                        <th>Mobile No.</th>
                        <th>Email</th>
                        <th>Subscribed</th>
-                       <th>Date of last Donation</th>
+                       <th>Age</th>
+                       <th>Department</th>
+                       <th>Role</th>
                      </tr>
                    </thead>
                    <tbody>
@@ -49,7 +55,7 @@ class ListUsers extends Component {
                          user=>
                          <tr key={user.id}>
                            <td>{user.id}</td>
-                           <td>{user.name}</td>
+                           <td>{user.fname} {user.mname} {user.lname}</td>
                            <td>{user.gender}</td>
                            <td>{user.blood_group}</td>
                            <td>{user.address}</td>
@@ -58,7 +64,10 @@ class ListUsers extends Component {
                            <td>{user.mobile}</td>
                            <td>{user.email}</td>
                            <td>{user.subscribe}</td>
-                           <td>{user.ddate}</td>
+                           <td>{user.age}</td>
+                           <td>{user.department}</td>
+                           <td>{user.role}</td>
+
                          </tr>
                        )
                      }

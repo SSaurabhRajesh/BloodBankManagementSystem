@@ -9,6 +9,7 @@ import HomePage from './components/HomePage';
 import About from './components/About';
 import Contact from './components/Contact';
 import Attendence from './components/Attendence';
+import Profile from './components/Profile';
 
 
 function App() {
@@ -20,10 +21,11 @@ function App() {
           <Route path="/HomePage" exact element={<HomePage/>}/>
           <Route path="/about" exact element={<About/>}/>
           <Route path="/contact" exact element={<Contact/>}/>
-          <Route path="/users" element={<ListUsers/>}/>
-          <Route path="/add-user" element={<CreateUserComponent/>}/>
-          <Route path="/map" element={<GoogleApiWrapper/>}/>
+          <Route path="/users" exact element={<ListUsers/>}/>
+          <Route path="/CreateUserComponent" exact element={<CreateUserComponent/>}/>
+          <Route path="/map" exact element={<GoogleApiWrapper/>}/>
           <Route path="/Attendence" exact element={<Attendence/>}/>
+          <Route path="/Profile" exact element={<Profile/>}/>
          </Routes>
       </BrowserRouter>
       <FooterComponents/>

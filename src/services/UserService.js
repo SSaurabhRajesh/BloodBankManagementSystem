@@ -5,5 +5,8 @@ class UserSevice{
     getUsers(){
         return axios.get(USER_API_BASE_URL);
     }
+    createUser(user){
+        return axios.post(USER_API_BASE_URL,user);
+    }
 }
 export default new UserSevice()
