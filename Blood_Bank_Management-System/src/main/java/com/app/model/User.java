@@ -1,13 +1,17 @@
 package com.app.model;
 
-import java.time.LocalDate;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -15,44 +19,62 @@ import javax.persistence.Table;
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id")
 	private long id;
-	@Column(name="name")
-	private String name;
+	@Column(name="fname")
+	private String fname;
+	@Column(name="mname")
+	private String mname;
+	@Column(name="lname")
+	private String lname;
 	@Column(name="gender")
 	private String gender;
 	@Column(name="bloodgroup")
 	private String blood_group;
 	@Column(name="address")
 	private String address;
+	@Column(name="username")
+	private String username;
 	@Column(name="password")
 	private String password;
 	@Column(name="mobileno")
 	private long mobile;
 	@Column(name="email")
 	private String email;
-	@Column(name="date")
-	private LocalDate Ddate;
+	@Column(name="department")
+	private String department;
+	@Column(name="age")
+	private int age;
 	@Column(name="subscribe")
 	private Boolean subscribe;
 	@Enumerated(EnumType.STRING)
 	@Column(name="role")
 	private Role role;
+	
+	@OneToOne(mappedBy="user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private BloodTestLog bloodTestLog;
+	
 	public User() {
 		// TODO Auto-generated constructor stub
 	}
-	public User(String name, String gender, String blood_group, String address, String username, String password,
-			int mobile, String email, LocalDate ddate, Boolean subscribe,Role role) {
+	public User(String fname,String mname,String lname, String gender, String blood_group, String address, String username, String password,
+			int mobile, String email, String department, int age, Boolean subscribe,Role role,BloodTestLog bloodTestLog) {
 		super();
-		this.name = name;
+		this.fname = fname;
+		this.mname = mname;
+		this.lname = lname;
 		this.gender = gender;
 		this.blood_group = blood_group;
 		this.address = address;
+		this.username = username;
 		this.password = password;
 		this.mobile = mobile;
 		this.email = email;
-		Ddate = ddate;
+		this.department = department;
+		this.age = age;
 		this.subscribe = subscribe;
 		this.role=role;
+		this.bloodTestLog=bloodTestLog;
 		
 	}
 	public long getId() {
@@ -61,11 +83,23 @@ public class User {
 	public void setId(long id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+	public String getFname() {
+		return fname;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setFname(String fname) {
+		this.fname = fname;
+	}
+	public String getMname() {
+		return mname;
+	}
+	public void setMname(String mname) {
+		this.mname = mname;
+	}
+	public String getLname() {
+		return lname;
+	}
+	public void setLname(String lname) {
+		this.lname = lname;
 	}
 	public String getGender() {
 		return gender;
@@ -85,6 +119,12 @@ public class User {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
 	public String getPassword() {
 		return password;
 	}
@@ -103,11 +143,17 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public LocalDate getDdate() {
-		return Ddate;
+	public String getDepartment() {
+		return department;
 	}
-	public void setDdate(LocalDate ddate) {
-		Ddate = ddate;
+	public void setDepartment(String department) {
+		this.department = department;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
 	}
 	public Boolean getSubscribe() {
 		return subscribe;
@@ -120,6 +166,12 @@ public class User {
 	}
 	public void setRole(Role role) {
 		this.role = role;
+	}
+	public BloodTestLog getBloodTestLog() {
+		return bloodTestLog;
+	}
+	public void setBloodTestLog(BloodTestLog bloodTestLog) {
+		this.bloodTestLog = bloodTestLog;
 	}
 	
 	

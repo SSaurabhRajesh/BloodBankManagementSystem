@@ -49,14 +49,18 @@ public class UserController {
 		User user=userRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("User Not Exist with Id="+id));
 		user.setAddress(userDetails.getAddress());
 		user.setBlood_group(userDetails.getBlood_group());
-		user.setDdate(userDetails.getDdate());
+		user.setAge(userDetails.getAge());
 		user.setEmail(userDetails.getEmail());
 		user.setGender(userDetails.getGender());
 		user.setMobile(userDetails.getMobile());
-		user.setName(userDetails.getName());
+		user.setFname(userDetails.getFname());
+		user.setMname(userDetails.getMname());
+		user.setLname(userDetails.getLname());
 		user.setPassword(userDetails.getPassword());
 		user.setSubscribe(userDetails.getSubscribe());
 		user.setRole(userDetails.getRole());
+		user.setDepartment(userDetails.getDepartment());
+		user.setUsername(userDetails.getUsername());
 		User updatedUser=userRepository.save(user);
 		return ResponseEntity.ok(updatedUser);
 	}

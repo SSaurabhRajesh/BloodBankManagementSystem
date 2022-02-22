@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @Table(name="bloodstock")
 public class BloodStock {
 	@Id
-	@GeneratedValue(strategy=GenerationType.TABLE)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private String bloodgrp;
 	@Column(name="quantity")
 	private int quantity;
