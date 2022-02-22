@@ -78,9 +78,9 @@ changeSubscribeHandler= (event) =>{this.setState({subscribe: event.target.value}
                                                 <select name="Role"
                                                 value={this.state.role} onChange={this.changeRoleHandler}>
                                                     <option value="User">User</option>
-                                                    <option id="Government Officials" value="Government Officials">Government Officials</option>
+                                                    <option id="Government Officials" value="GovernmentOfficials">Government Officials</option>
                                                     <option value="Admin">Admin</option>
-                                                    <option value="Lab Assistant">Lab Assistant</option>
+                                                    <option value="LabAssistant">Lab Assistant</option>
                                                 </select>
                                             </td>
                                         </tr>
@@ -173,8 +173,8 @@ changeSubscribeHandler= (event) =>{this.setState({subscribe: event.target.value}
                                             <td>
                                                 Want To Subscribe:
                                                 <br />
-                                                <input type="radio" name="Subscribe" id="Subscribe" /><label for="Yes" value={this.state.subscribe} onChange={this.changeSubscribeHandler}>Yes</label>
-                                                <input type="radio" name="Subscribe" id="Subscribe" /><label for="No" value={this.state.subscribe} onChange={this.changeSubscribeHandler}>No</label>
+                                                <label for="Yes" value={this.state.subscribe} onChange={this.changeSubscribeHandler}><input type="radio" name="Subscribe" id="Subscribe" checked={true}/>Yes</label>
+                                                <label for="No" value={this.state.subscribe} onChange={this.changeSubscribeHandler}><input type="radio" name="Subscribe" id="Subscribe" checked={false}/>No</label>
                                             </td>
                                             <td>
                                                 <button type="reset" class="btn btn-outline-warning">Reset</button>
