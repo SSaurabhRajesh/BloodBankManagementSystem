@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.app.exception.ResourceNotFoundException;
 import com.app.model.BloodTestLog;
-import com.app.model.User;
 import com.app.repository.BloodTestLogRepository;
 
 @CrossOrigin(origins = "http://localhost:3000/")

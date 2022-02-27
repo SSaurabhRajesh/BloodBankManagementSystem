@@ -61,6 +61,8 @@ public class UserController {
 		user.setRole(userDetails.getRole());
 		user.setDepartment(userDetails.getDepartment());
 		user.setUsername(userDetails.getUsername());
+//		user.setBloodTestLog(userDetails.getBloodTestLog());
+//		user.setRequest(userDetails.getRequest());
 		User updatedUser=userRepository.save(user);
 		return ResponseEntity.ok(updatedUser);
 	}

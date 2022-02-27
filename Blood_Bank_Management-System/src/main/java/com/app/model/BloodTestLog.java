@@ -3,12 +3,10 @@ package com.app.model;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -17,11 +15,8 @@ import javax.persistence.Table;
 public class BloodTestLog {
 	@Id
 	@GeneratedValue(strategy =GenerationType.IDENTITY )
-	@Column(name="id")
 	private long id;
-	@OneToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="id")
-	private User user;
+	
 	@Column(name="hepatitisb")
 	private Boolean hepatitisB;
 	@Column(name="hepatitisc")
@@ -32,11 +27,16 @@ public class BloodTestLog {
 	private Boolean syphilis;
 	@Column(name="maleria")
 	private Boolean maleria;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="userid")
+	private User user;
+	
 	public BloodTestLog() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public BloodTestLog(long id, User user, Boolean hepatitisB, Boolean hepatitisC, Boolean hiv, Boolean syphilis,
+	public BloodTestLog(long id,User user, Boolean hepatitisB, Boolean hepatitisC, Boolean hiv, Boolean syphilis,
 			Boolean maleria) {
 		super();
 		this.id = id;

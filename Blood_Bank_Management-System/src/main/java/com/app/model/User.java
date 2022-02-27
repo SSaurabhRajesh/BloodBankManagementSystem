@@ -6,12 +6,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -51,14 +50,19 @@ public class User {
 	@Column(name="role")
 	private Role role;
 	
-	@OneToOne(mappedBy="user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private BloodTestLog bloodTestLog;
+//	@OneToOne(cascade =CascadeType.ALL)
+//	@JoinColumn(name="btlid")
+//	private BloodTestLog bloodTestLog;
+	
+//	@OneToOne(cascade =CascadeType.ALL)
+//	@JoinColumn(name="brequest")
+//	private Request request;
 	
 	public User() {
 		// TODO Auto-generated constructor stub
 	}
 	public User(String fname,String mname,String lname, String gender, String blood_group, String address, String username, String password,
-			int mobile, String email, String department, int age, Boolean subscribe,Role role,BloodTestLog bloodTestLog) {
+			int mobile, String email, String department, int age, Boolean subscribe,Role role) {
 		super();
 		this.fname = fname;
 		this.mname = mname;
@@ -74,7 +78,8 @@ public class User {
 		this.age = age;
 		this.subscribe = subscribe;
 		this.role=role;
-		this.bloodTestLog=bloodTestLog;
+//		this.bloodTestLog=bloodTestLog;
+//		this.request=request;
 		
 	}
 	public long getId() {
@@ -167,12 +172,18 @@ public class User {
 	public void setRole(Role role) {
 		this.role = role;
 	}
-	public BloodTestLog getBloodTestLog() {
-		return bloodTestLog;
-	}
-	public void setBloodTestLog(BloodTestLog bloodTestLog) {
-		this.bloodTestLog = bloodTestLog;
-	}
-	
+//	public BloodTestLog getBloodTestLog() {
+//		return bloodTestLog;
+//	}
+//	public void setBloodTestLog(BloodTestLog bloodTestLog) {
+//		this.bloodTestLog = bloodTestLog;
+//	}
+//	public Request getRequest() {
+//		return request;
+//	}
+//	public void setRequest(Request request) {
+//		this.request = request;
+//	}
+//	
 	
 }

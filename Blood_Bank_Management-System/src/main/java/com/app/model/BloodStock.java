@@ -11,8 +11,10 @@ import javax.persistence.Table;
 @Table(name="bloodstock")
 public class BloodStock {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="bloodgrp",columnDefinition = "text", nullable = false, updatable = false)
 	private String bloodgrp;
+	
 	@Column(name="quantity")
 	private int quantity;
 	
