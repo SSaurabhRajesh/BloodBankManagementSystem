@@ -1,18 +1,101 @@
 import React, { Component } from 'react';
+import BstockService from '../services/BstockService';
+
 
 class HomePage extends Component {
-    constructor(props){
+    constructor(props) {
         super(props)
-            this.state={
-
-            
+        this.state = {
+            bstock:[]
         }
     }
+
+    componentDidMount(){
+        BstockService.getBloodStock().then((res) => {
+          this.setState({bstock:res.data});
+        });
+      }
+
     render() {
         return (
             <div>
-                <iframe src="./login.html" height="500" width="450" title="login page"/>
-                <iframe src="./bloodavailability.html" height="500" width="1000" title="Blood Bag Availability Data"/>
+                {
+                    this.state.bstock.map(
+                        bstock=>
+                        <table >
+                    <tr class="row w-75">
+                        <td><a href="./Login" class="text-decoration-none">
+                            <div class="card w-auto p-3 text-white bg-danger mb-4 ">
+                                <div class="card-body text-center">
+                                    <p class="card-text">{bstock.bloodgrp}</p>
+                                    <p class="card-text">{bstock.quantity}</p>
+                                </div>
+                            </div>
+                            </a>
+                        </td>
+                        {/* <td><a href="./Login" class="text-decoration-none">
+                            <div class="card w-auto p-3 text-white bg-danger mb-4 ">
+                                <div class="card-body text-center">
+                                    <p class="card-text">B+</p>
+                                </div>
+                            </div>
+                            </a>
+                        </td>
+                        <td><a href="./Login" class="text-decoration-none">
+                            <div class="card w-auto p-3 text-white bg-danger mb-4 ">
+                                <div class="card-body text-center">
+                                    <p class="card-text">AB+</p>
+                                </div>
+                            </div>
+                            </a>
+                        </td>
+                        <td><a href="./Login" class="text-decoration-none">
+                            <div class="card w-auto p-3 text-white bg-danger mb-4 ">
+                                <div class="card-body text-center">
+                                    <p class="card-text">O+</p>
+                                </div>
+                            </div>
+                            </a>
+                        </td> */}
+                    </tr>
+                    {/* <tr>
+                        <td><a href="./Login" class="text-decoration-none">
+                            <div class="card w-auto p-3 text-white bg-danger mb-4 ">
+                                <div class="card-body text-center">
+                                    <p class="card-text">A-</p>
+                                </div>
+                            </div>
+                            </a>
+                        </td>
+                        <td><a href="./Login" class="text-decoration-none">
+                            <div class="card w-auto p-3 text-white bg-danger mb-4 ">
+                                <div class="card-body text-center">
+                                    <p class="card-text">B-</p>
+                                </div>
+                            </div>
+                            </a>
+                        </td>
+                        <td><a href="./Login" class="text-decoration-none">
+                            <div class="card w-auto p-3 text-white bg-danger mb-4 ">
+                                <div class="card-body text-center">
+                                    <p class="card-text">AB-</p>
+                                </div>
+                            </div>
+                            </a>
+                        </td>
+                        <td><a href="./Login" class="text-decoration-none">
+                            <div class="card w-auto p-3 text-white bg-danger mb-4 ">
+                                <div class="card-body text-center">
+                                    <p class="card-text">O-</p>
+                                </div>
+                            </div>
+                            </a>
+                        </td>
+                    </tr> */}
+                </table>
+
+                    )
+                }
             </div>
         );
     }

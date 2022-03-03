@@ -18,6 +18,9 @@ class ListUsers extends Component {
     });
   }
   
+user(id){
+  this.props.history.push(`/user/${id}`,``);
+}
 
 //  addUser(){
 //    this.props.history.push('/adduser');
@@ -47,6 +50,7 @@ class ListUsers extends Component {
                        <th>Age</th>
                        <th>Department</th>
                        <th>Role</th>
+                       <th>Actions</th>
                      </tr>
                    </thead>
                    <tbody>
@@ -67,7 +71,11 @@ class ListUsers extends Component {
                            <td>{user.age}</td>
                            <td>{user.department}</td>
                            <td>{user.role}</td>
+                           <td>
 
+                           <td><button style={{marginLeft:"10px"}} onClick={()=>this.user(user.id)} className='btn btn-info'>View</button></td>
+
+                           </td>
                          </tr>
                        )
                      }

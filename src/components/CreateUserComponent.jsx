@@ -1,25 +1,29 @@
 import React, { Component } from 'react';
 import UserService from '../services/UserService';
 
+
+
 class CreateUserComponent extends Component {
     constructor(props) {
         super(props)
         this.state = {
             role:'',
-            firstname:'',
-            middlename:'',
-            lastname:'',
+            fname:'',
+            mname:'',
+            lname:'',
             username:'',
             password:'',
             gender:'',
             age:'',
-            bloodgroup:'',
+            blood_group:'',
             address:'',
             department:'',
             number:'',
             email:'',
             subscribe:''
         }
+
+        
         this.changeRoleHandler=this.changeRoleHandler.bind(this);
         this.changeFirstNameHandler=this.changeFirstNameHandler.bind(this);
         this.changeMiddleNameHandler=this.changeMiddleNameHandler.bind(this);
@@ -38,24 +42,26 @@ class CreateUserComponent extends Component {
         
     }
     saveUser=(u)=>{u.preventDefault();
-        let user={ role:this.state.role,firstname:this.state.firstname,middlename:this.state.middlename,lastname:this.state.lastname,username:this.state.username,password:this.state.password,gender:this.state.gender,age:this.state.age,bloodgroup:this.state.bloodgroup,address:this.state.address,department:this.state.department,number:this.state.number,email:this.state.email,subscribe:this.state.subscribe};
+        let user={ role:this.state.role,fname:this.state.fname,mname:this.state.mname,lname:this.state.lname,username:this.state.username,password:this.state.password,gender:this.state.gender,age:this.state.age,blood_group:this.state.blood_group,address:this.state.address,department:this.state.department,number:this.state.number,email:this.state.email,subscribe:this.state.subscribe};
     console.log((JSON.stringify(user)));
-    UserService.createUser(user).then(
-        res =>{
-            this.props.history.push('/users');
-        }
-    );
+    
+    UserService.createUser(user).then((response) =>{
+        this.props.history.push("/Login");
+        console.log('user data added successfully',response.data);  
+        });
     }
+    
+    
 changeRoleHandler=(event)=>{this.setState({role:event.target.value});}
-changeFirstNameHandler= (event) =>{this.setState({firstname: event.target.value});}
-changeMiddleNameHandler= (event) =>{this.setState({middlename: event.target.value});}
-changeLastNameHandler= (event) =>{this.setState({lastname: event.target.value});}
+changeFirstNameHandler= (event) =>{this.setState({fname: event.target.value});}
+changeMiddleNameHandler= (event) =>{this.setState({mname: event.target.value});}
+changeLastNameHandler= (event) =>{this.setState({lname: event.target.value});}
 changeUserNameHandler= (event) =>{this.setState({username: event.target.value});}
 changePasswordHandler= (event) =>{this.setState({password: event.target.value});}
 changeGenderHandler= (event) =>{this.setState({gender: event.target.value});}
 changeAgeHandler= (event) =>{this.setState({age: event.target.value});}
 changeAddressHandler= (event) =>{this.setState({address: event.target.value});}
-changeBloodGroupHandler= (event) =>{this.setState({bloodgroup: event.target.value});}
+changeBloodGroupHandler= (event) =>{this.setState({blood_group: event.target.value});}
 changeDepartmentHandler= (event) =>{this.setState({department: event.target.value});}
 changeNumberHandler= (event) =>{this.setState({number: event.target.value});}
 changeEmailHandler= (event) =>{this.setState({email: event.target.value});}
@@ -77,10 +83,10 @@ changeSubscribeHandler= (event) =>{this.setState({subscribe: event.target.value}
                                             <td>
                                                 <select name="Role"
                                                 value={this.state.role} onChange={this.changeRoleHandler}>
-                                                    <option value="User">User</option>
-                                                    <option id="Government Officials" value="GovernmentOfficials">Government Officials</option>
-                                                    <option value="Admin">Admin</option>
-                                                    <option value="LabAssistant">Lab Assistant</option>
+                                                    <option value="USER">User</option>
+                                                    <option value="OFFICIAL" >Government Officials</option>
+                                                    <option value="ADMIN">Admin</option>
+                                                    <option value="LABASSISTANT">Lab Assistant</option>
                                                 </select>
                                             </td>
                                         </tr>
@@ -88,17 +94,17 @@ changeSubscribeHandler= (event) =>{this.setState({subscribe: event.target.value}
                                             <td>
                                                 First Name:
                                                 <input type="text" name="username" id="username" required 
-                                                value={this.state.firstname} onChange={this.changeFirstNameHandler}/>
+                                                value={this.state.fname} onChange={this.changeFirstNameHandler}/>
                                             </td>
                                             <td>
                                                 Middle Name:
                                                 <input type="text" name="username" id="username" required 
-                                                value={this.state.middlename} onChange={this.changeMiddleNameHandler}/>
+                                                value={this.state.mname} onChange={this.changeMiddleNameHandler}/>
                                             </td>
                                             <td>
                                                 Last Name:
                                                 <input type="text" name="username" id="username" required 
-                                                value={this.state.lastname} onChange={this.changeLastNameHandler}/>
+                                                value={this.state.lname} onChange={this.changeLastNameHandler}/>
                                             </td>
                                         </tr>
                                         <tr>
@@ -115,9 +121,9 @@ changeSubscribeHandler= (event) =>{this.setState({subscribe: event.target.value}
                                             <td>
                                                 Gender:
                                                 <br />
-                                                <input type="radio" name="gender" id="Male" value={this.state.gender} onChange={this.changeGenderHandler}/>Male
-                                                <input type="radio" name="gender" id="Female" value={this.state.gender} onChange={this.changeGenderHandler}/>Female
-                                                <input type="radio" name="gender" id="Transgender" value={this.state.gender} onChange={this.changeGenderHandler}/>Transgender
+                                                <input type="radio" name="gender" id="Male" value="male"  onChange={this.changeGenderHandler}/>Male
+                                                <input type="radio" name="gender" id="Female" value="female" onChange={this.changeGenderHandler}/>Female
+                                                <input type="radio" name="gender" id="Transgender" value="transgender"  onChange={this.changeGenderHandler}/>Transgender
                                             </td>
                                         </tr>
                                         <tr>
@@ -131,7 +137,7 @@ changeSubscribeHandler= (event) =>{this.setState({subscribe: event.target.value}
                                                 Blood Group:
                                                 <br />
                                                 <select name="bloodgroup" id="bloodgroup"
-                                                value={this.state.bloodgroup} onChange={this.changeBloodGroupHandler}>
+                                                value={this.state.blood_group} onChange={this.changeBloodGroupHandler}>
                                                     <option value="A+">A+</option>
                                                     <option value="A-">A-</option>
                                                     <option value="B+">B+</option>
@@ -173,13 +179,13 @@ changeSubscribeHandler= (event) =>{this.setState({subscribe: event.target.value}
                                             <td>
                                                 Want To Subscribe:
                                                 <br />
-                                                <label for="Yes" value={this.state.subscribe} onChange={this.changeSubscribeHandler}><input type="radio" name="Subscribe" id="Subscribe" checked={true}/>Yes</label>
-                                                <label for="No" value={this.state.subscribe} onChange={this.changeSubscribeHandler}><input type="radio" name="Subscribe" id="Subscribe" checked={false}/>No</label>
+                                                <label for="Yes" ><input type="radio" name="Subscribe" id="Subscribe" checked={this.state.subscribe === "true"} value="true" onChange={this.changeSubscribeHandler}/>Yes</label>
+                                                <label for="No" ><input type="radio" name="Subscribe" id="Subscribe" checked={this.state.subscribe === "false"} value="false" onChange={this.changeSubscribeHandler}/>No</label>
                                             </td>
-                                            <td>
+                                            {/* <td>
                                                 <button type="reset" class="btn btn-outline-warning">Reset</button>
 
-                                            </td>
+                                            </td> */}
                                             <td>
                                                 <button type="submit" class="btn btn-outline-success" >SUBMIT</button>
                                             </td>
