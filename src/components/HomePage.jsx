@@ -6,96 +6,33 @@ class HomePage extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            bstock:[]
+            bstock: []
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
         BstockService.getBloodStock().then((res) => {
-          this.setState({bstock:res.data});
+            this.setState({ bstock: res.data });
         });
-      }
+    }
 
     render() {
         return (
             <div>
-                {
-                    this.state.bstock.map(
-                        bstock=>
-                        <table >
+                <table >
                     <tr class="row w-75">
-                        <td><a href="./Login" class="text-decoration-none">
-                            <div class="card w-auto p-3 text-white bg-danger mb-4 ">
-                                <div class="card-body text-center">
-                                    <p class="card-text">{bstock.bloodgrp}</p>
-                                    <p class="card-text">{bstock.quantity}</p>
-                                </div>
-                            </div>
-                            </a>
-                        </td>
-                        {/* <td><a href="./Login" class="text-decoration-none">
-                            <div class="card w-auto p-3 text-white bg-danger mb-4 ">
-                                <div class="card-body text-center">
-                                    <p class="card-text">B+</p>
-                                </div>
-                            </div>
-                            </a>
-                        </td>
-                        <td><a href="./Login" class="text-decoration-none">
-                            <div class="card w-auto p-3 text-white bg-danger mb-4 ">
-                                <div class="card-body text-center">
-                                    <p class="card-text">AB+</p>
-                                </div>
-                            </div>
-                            </a>
-                        </td>
-                        <td><a href="./Login" class="text-decoration-none">
-                            <div class="card w-auto p-3 text-white bg-danger mb-4 ">
-                                <div class="card-body text-center">
-                                    <p class="card-text">O+</p>
-                                </div>
-                            </div>
-                            </a>
-                        </td> */}
+                        {this.state.bstock.map(bstock =>
+                                    <td><a href="./Login" class="text-decoration-none">
+                                        <div class="card w-auto p-3 text-white bg-danger mb-4 ">
+                                            <div class="card-body text-center">
+                                                <p class="card-text">{bstock.bloodgrp}</p>
+                                                <p class="card-text">{bstock.quantity}</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    </td>)}
                     </tr>
-                    {/* <tr>
-                        <td><a href="./Login" class="text-decoration-none">
-                            <div class="card w-auto p-3 text-white bg-danger mb-4 ">
-                                <div class="card-body text-center">
-                                    <p class="card-text">A-</p>
-                                </div>
-                            </div>
-                            </a>
-                        </td>
-                        <td><a href="./Login" class="text-decoration-none">
-                            <div class="card w-auto p-3 text-white bg-danger mb-4 ">
-                                <div class="card-body text-center">
-                                    <p class="card-text">B-</p>
-                                </div>
-                            </div>
-                            </a>
-                        </td>
-                        <td><a href="./Login" class="text-decoration-none">
-                            <div class="card w-auto p-3 text-white bg-danger mb-4 ">
-                                <div class="card-body text-center">
-                                    <p class="card-text">AB-</p>
-                                </div>
-                            </div>
-                            </a>
-                        </td>
-                        <td><a href="./Login" class="text-decoration-none">
-                            <div class="card w-auto p-3 text-white bg-danger mb-4 ">
-                                <div class="card-body text-center">
-                                    <p class="card-text">O-</p>
-                                </div>
-                            </div>
-                            </a>
-                        </td>
-                    </tr> */}
                 </table>
-
-                    )
-                }
             </div>
         );
     }

@@ -1,23 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blood Test Log</title>
-    <link rel="icon" href="./logo1.svg" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">  
-        <style>
-            .center{
-                margin-left: auto;
-                margin-right: auto;
-            }
-        </style>
+import React, { Component } from 'react';
 
-    </head>
-<body>
-    <form action="" method="post">
+class BloodTestLog extends Component {
+    render() {
+        return (
+            <div>
+                 <form action="" method="post">
         <table class="center table table-striped table-hover" style="width: 40%; height: 100%; padding: 30px; margin-top: 200px;">
             <tr>
                 <td colspan="3"><h3>Blood Tests log</h3></td>
@@ -35,9 +22,9 @@
                     Hepatitis B
                 </td>
                 <td>
-                 <input class="form-check-input" type="radio" name="T1" id="T1T" value="T1T">
+                 <input class="form-check-input" type="radio" name="T1" id="T1T" value="T1T"/>
                  <label class="form-check-label" for="inlineRadio1">Positive</label>
-                 <input class="form-check-input" type="radio" name="T1" id="T1F" value="T1F">
+                 <input class="form-check-input" type="radio" name="T1" id="T1F" value="T1F"/>
                  <label class="form-check-label" for="inlineRadio1">Negative</label>
                 </td>
             </tr>
@@ -49,9 +36,9 @@
                  Hepatitis C
              </td>
              <td>
-                 <input class="form-check-input" type="radio" name="T2" id="T2T" value="T2T">
+                 <input class="form-check-input" type="radio" name="T2" id="T2T" value="T2T"/>
                  <label class="form-check-label" for="inlineRadio1">Positive</label>
-                 <input class="form-check-input" type="radio" name="T2" id="T2F" value="T2F">
+                 <input class="form-check-input" type="radio" name="T2" id="T2F" value="T2F"/>
                  <label class="form-check-label" for="inlineRadio1">Negative</label>
              </td>
          </tr>
@@ -63,9 +50,9 @@
                 HIV/AIDS
              </td>
              <td>
-                 <input class="form-check-input" type="radio" name="T3" id="T3T" value="T3T">
+                 <input class="form-check-input" type="radio" name="T3" id="T3T" value="T3T"/>
                  <label class="form-check-label" for="inlineRadio1">Positive</label>
-                 <input class="form-check-input" type="radio" name="T3" id="T3F" value="T3F">
+                 <input class="form-check-input" type="radio" name="T3" id="T3F" value="T3F"/>
                  <label class="form-check-label" for="inlineRadio1">Negative</label>
              </td>
          </tr>
@@ -77,9 +64,9 @@
                  Syphilis
              </td>
              <td>
-                 <input class="form-check-input" type="radio" name="T4" id="T4T" value="T4T">
+                 <input class="form-check-input" type="radio" name="T4" id="T4T" value="T4T"/>
                  <label class="form-check-label" for="inlineRadio1">Positive</label>
-                 <input class="form-check-input" type="radio" name="T4" id="T4F" value="T4F">
+                 <input class="form-check-input" type="radio" name="T4" id="T4F" value="T4F"/>
                  <label class="form-check-label" for="inlineRadio1">Negative</label>
              </td>
          </tr>
@@ -91,9 +78,9 @@
                  Maleria
              </td>
              <td>
-                 <input class="form-check-input" type="radio" name="T5" id="T5T" value="T5T">
+                 <input class="form-check-input" type="radio" name="T5" id="T5T" value="T5T"/>
                  <label class="form-check-label" for="inlineRadio1">Positive</label>
-                 <input class="form-check-input" type="radio" name="T5" id="T5F" value="T5F">
+                 <input class="form-check-input" type="radio" name="T5" id="T5F" value="T5F"/>
                  <label class="form-check-label" for="inlineRadio1">Negative</label>
              </td>
          </tr>
@@ -107,5 +94,9 @@
          </tr>
          </table>
     </form>
-</body>
-</html>
+            </div>
+        );
+    }
+}
+
+export default BloodTestLog;

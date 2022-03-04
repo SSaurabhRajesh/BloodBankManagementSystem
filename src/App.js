@@ -12,6 +12,7 @@ import Attendence from './components/Attendence';
 import User from './components/User';
 import Login from './components/Login';
 import BloodAvailability from './components/BloodAvailability';
+import Certificate from './components/Certificate';
 
 
 function App() {
@@ -27,9 +28,10 @@ function App() {
           <Route path="/CreateUserComponent" exact element={<CreateUserComponent/>}/>
           <Route path="/map" exact element={<GoogleApiWrapper/>}/>
           <Route path="/Attendence" exact element={<Attendence/>}/>
-          <Route path="/User/:id" exact element={<User/>}/>
+          <Route path="/user/:id" exact element={<User/>}/>
           <Route path="/Login" exact element={<Login/>}/>
           <Route path="/BloodAvailability" exact element={<BloodAvailability/>}/>
+          <Route path="/Certificate" exact element={<Certificate/>}/>
          </Routes>
       </BrowserRouter>
       <FooterComponents/>

@@ -46,9 +46,10 @@ class CreateUserComponent extends Component {
     console.log((JSON.stringify(user)));
     
     UserService.createUser(user).then((response) =>{
-        this.props.history.push("/Login");
+        
         console.log('user data added successfully',response.data);  
-        });
+        this.props.history.push("/Login");    
+    });
     }
     
     
