@@ -35,7 +35,8 @@ public class UserController {
 	//create user rest api
 	@PostMapping("/user")
 	public User createUser(@RequestBody User user) {
-		return userRepository.save(user);
+		User retUser=userRepository.save(user);
+		return retUser;
 	}
 	//get user by id rest api
 	@GetMapping("/user/{id}")

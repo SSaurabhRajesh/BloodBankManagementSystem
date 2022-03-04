@@ -243,5 +243,11 @@ public class DValidation {
 		this.user = user;
 	}
 	
-
+//	public String validation() {
+//		if((q1&&q2&q4&&q5&&q6&&q7&&q8&&q9&&q10&&q12&&q13&&q14&&q15&&q17&&q20&&q21&&q22)&&(100<q3&&q3<180)&&(q11>12.5)&&(50<q16&&q16<100)&&(q19>45)) {
+//			return "Valid";
+//		}
+//		return "InValid";
+//		
+//	}
 }
