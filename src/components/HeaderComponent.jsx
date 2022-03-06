@@ -9,18 +9,21 @@ class HeaderComponent extends Component {
   render() {
     return (
       <div>
-        <header>
+        <header fixed="top">
           <nav className='navbar navbar-expand-md navbar-danger bg-danger bg-gradient-light'>
-            <div><a href="HomePage" class="navbar-brand" >New Life Blood Bank</a></div>
+            <div><a href="./Home" class="navbar-brand" >New Life Blood Bank</a></div>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="./Homepage">Home</a>
+                <a class="nav-link active" aria-current="page" href="./Home">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="./about.html">About</a>
+                <a class="nav-link active" aria-current="page" href="./About">About</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="./Contact.html">Contact Us</a>
+                <a class="nav-link active" aria-current="page" href="./Contact">Contact Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="./Login">Login</a>
               </li>
             </ul>
           </nav>

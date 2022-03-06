@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import LoginUserService from '../services/LoginUserService';
+import UserService from '../services/UserService';
+import { createBrowserHistory } from "history";
+
 
 
 class Login extends Component {
@@ -20,9 +22,10 @@ class Login extends Component {
     Login=(u)=>{u.preventDefault();
         let login={ username:this.state.username,password:this.state.password};
     console.log((JSON.stringify(login)));
-    LoginUserService.getLoginUser(login).then(
+    UserService.getUserById(this.state.username).then(
         res =>{
-            this.props.history.push('/User');
+            const history = createBrowserHistory({ window });
+            this.state.history.push('/User',res.data); 
         }
     );
     }
@@ -50,9 +53,9 @@ class Login extends Component {
                         <div class="checkbox">
                             <label><input type="checkbox" /> Remember me</label>
                         </div>
-                        <a href="./forgotPass.html">Forgot Password?</a>
+                        <a href="ForgotP">Forgot Password?</a>
                         <a href="CreateUSerComponent">Create New Account</a>
-                        <input type="submit" class="btn btn-outline-success w-25 p-4" value="Submit" />
+                        <span><input type="submit" class="btn btn-outline-success w-25 p-4" value="Submit" /></span>
                     </div>
                 </form>
             </div>

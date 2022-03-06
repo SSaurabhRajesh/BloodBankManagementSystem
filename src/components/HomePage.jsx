@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import BstockService from '../services/BstockService';
+import Map from './Map';
 
 
 class HomePage extends Component {
@@ -19,20 +20,21 @@ class HomePage extends Component {
     render() {
         return (
             <div>
-                <table >
-                    <tr class="row w-75">
+                <table class="d-flex align-items-center justify-content-center">
+                    <tr class="row ">
                         {this.state.bstock.map(bstock =>
-                                    <td><a href="./Login" class="text-decoration-none">
-                                        <div class="card w-auto p-3 text-white bg-danger mb-4 ">
-                                            <div class="card-body text-center">
-                                                <p class="card-text">{bstock.bloodgrp}</p>
-                                                <p class="card-text">{bstock.quantity}</p>
-                                            </div>
+                                <td class="col-sm-3"><a href="./Login" class="text-decoration-none" >
+                                    <div class="card w-auto p-1 text-white bg-danger  ">
+                                        <div class="card-body text-center">
+                                            <p class="card-text">Blood Group: <b>{bstock.bloodgrp}</b></p>
+                                            <p class="card-text">Available Bags: <b>{bstock.quantity}</b></p>
                                         </div>
-                                    </a>
-                                    </td>)}
+                                    </div>
+                                </a>
+                        </td>)}
                     </tr>
                 </table>
+                <Map/>
             </div>
         );
     }
