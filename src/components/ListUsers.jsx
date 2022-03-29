@@ -18,13 +18,11 @@ class ListUsers extends Component {
     });
   }
   
-user(id){
-  this.props.history.push(`/user/${id}`,``);
+deluser(id){
+  UserService.deluser(id).then((res) => {
+   console.log(res.data)
+  });
 }
-
-//  addUser(){
-//    this.props.history.push('/adduser');
-//   }
 
   render() {
     return (
@@ -33,7 +31,7 @@ user(id){
                  <a href="CreateUserComponent"><button type="button" className="btn btn-primary">Add User</button></a>
                  </div>
        <h2 className='text-center'>Users List</h2>
-               <div className='row'>
+               <div className='row' style={{margin :"20px"}}>
                  <table className='table table-striped table-bordered'>
                    <thead>
                      <tr>
@@ -67,14 +65,13 @@ user(id){
                            <td>{user.password}</td>
                            <td>{user.mobile}</td>
                            <td>{user.email}</td>
-                           <td>{user.subscribe}</td>
+                           <td>{user.subscribe.toString()}</td>
                            <td>{user.age}</td>
                            <td>{user.department}</td>
                            <td>{user.role}</td>
                            <td>
 
-                           <td><button style={{marginLeft:"10px"}} onClick={()=>this.user(user.id)} className='btn btn-info'>View</button></td>
-
+                           <td><button style={{marginLeft:"10px"}} onClick={this.deluser(user.id)} className='btn btn-info'>Delete</button></td>
                            </td>
                          </tr>
                        )

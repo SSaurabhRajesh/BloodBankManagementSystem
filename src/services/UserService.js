@@ -15,15 +15,19 @@ class UserSevice{
         return axios.post(USER_API_BASE_URL,user);
     }
     
-    // login(username,password){
-    //     let obj=axios.get(USER_API_BASE_URL);
-    //     for (obj.id = 1; obj.id < obj.length; obj.id++) {
-    //         if (obj.username===username && obj.password===password) {
-    //             return obj.id; 
-    //         }
-    //     }
-    //     return 0;
-    // }
+    deluser(id){
+        return axios.delete(USER_API_BASE_URL+'/'+id);
+    }
+
+    login(username,password){
+        let obj=axios.get(USER_API_BASE_URL);
+        for (obj.id = 1; obj.id < obj.length; obj.id++) {
+            if (obj.username===username && obj.password===password) {
+                return obj.id; 
+            }
+        }
+        return 0;
+    }
     
 }
 export default new UserSevice()

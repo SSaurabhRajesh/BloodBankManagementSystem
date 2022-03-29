@@ -20,7 +20,7 @@ class Certificate extends Component {
     render() {
         return (
             <div style={{size: "100%"}}>
-                <table class="center" style={{ margin: "auto",width:"60%",height:"100%",border: "6px double Black"}}>
+                <table class="center" style={{ margin: "auto",width:"100%",height:"100%",border: "6px double Black"}} >
                 <tr><td style={{textAlign:"center"}}><h1 style={{font: "50px", padding: "top 10px" }}>New Life Blood Bank</h1></td></tr>
                     <tr>
                         <td><center><img src="./images/logo.png" alt="logo" style={{width:"70px"}} /></center></td>
@@ -30,22 +30,16 @@ class Certificate extends Component {
                     <tr><td style={{font: "47px",font: "bold"}}><center>Name of Donor</center></td></tr>
                     <tr><td style={{font: "26px"}}><center>for it's valuable blood donation <br/> in <b>"New Life Blood Bank"</b> on ______and hope <br/> for it's support in future also.</center></td></tr>
                         <tr>
-                            <td style={{font: "30px"}}>
-                                <img src="./images/demosign1.png" alt="sign" style={{width:"100px", float:"left", padding:"20px" }} />
-                            </td>
-                            <td>  <img src="./images/demosign2.png" alt="sign" style={{width:"100px",float:"right"}}/>
-                            </td>
+                        <td><center><img src="./images/demosign1.png" alt="sign" style={{width:"100px", padding:"20px" }} /></center></td>
                         </tr>
                             <tr>
-                                <td style={{font: "27px", padding: "10px"}}>
+                                <center><td style={{font: "27px", padding: "10px"}}>
                                     Medical Officer
-                                </td>
-                                <td style={{font: "27px",padding: "10px"}}>
-                                    <center>President</center>
-                                </td>
+                                </td></center>
                             </tr>
                 </table>
-                <button type="submit" onSubmit={window.print()}>Print</button>
+
+                <button onClick={window.print()}>PRINT</button>
             </div>
                         );
     }

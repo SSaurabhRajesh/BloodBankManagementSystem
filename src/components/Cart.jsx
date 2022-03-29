@@ -74,7 +74,7 @@ class Cart extends Component {
                                             <p>{this.state.quantity * 1050}</p>
                                         </td>
                                         <td>
-                                            <button type="button" class=" btn btn-info">Payment</button>
+                                            <a href="./Payment"><button type="button" class=" btn btn-info">Payment</button></a>
                                         </td>
                                     </tr>
                                 </table>

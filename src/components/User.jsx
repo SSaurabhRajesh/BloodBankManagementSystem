@@ -1,6 +1,6 @@
-import { Button } from 'bootstrap';
 import React, { Component } from 'react';
 import UserService from '../services/UserService';
+
 
 class User extends Component {
   constructor(props) {
@@ -29,36 +29,36 @@ class User extends Component {
         if (this.state.user.role === a) {
           return (
             button = <tbody>
-              <tr><a href="./Home" class="text-decoration-none" > <button type="button" class="btn btn-primary btn-sm">Blood Stock Data</button></a> </tr>
-              <tr><a href="./DonorValidationData" class="text-decoration-none" > <button type="button" class="btn btn-primary btn-sm">Donor Validation Data</button></a> </tr>
-              <tr><a href="./ListUsers" class="text-decoration-none" > <button type="button" class="btn btn-primary btn-sm">User Details Data</button></a> </tr>
-              <tr><a href="./BloodTestLogData" class="text-decoration-none" > <button type="button" class="btn btn-primary btn-sm">Blood Test Log Data</button></a> </tr>
+              <tr><td><a href="/home" class="text-decoration-none" > <button type="button" class="btn btn-primary btn-sm">Blood Stock Data</button></a> </td>
+              <td><a href="/DonorValidationData" class="text-decoration-none" > <button type="button" class="btn btn-primary btn-sm">Donor Validation Data</button></a> </td>
+              <td><a href="/users" class="text-decoration-none" > <button type="button" class="btn btn-primary btn-sm">User Details Data</button></a> </td>
+              <td><a href="/BloodTestLogData" class="text-decoration-none" > <button type="button" class="btn btn-primary btn-sm">Blood Test Log Data</button></a></td> </tr>
             </tbody>
           )
         } else if (this.state.user.role === b) {
           return (
             button = <tbody>
-              <tr><a href="./Home" class="text-decoration-none" > <button type="button" class="btn btn-primary btn-sm">Blood Stock Data</button></a> </tr>
-              <tr><a href="./DonorValidation" class="text-decoration-none" > <button type="button" class="btn btn-primary btn-sm">Donate Blood</button></a> </tr>
-              <tr><a href="./Cart" class="text-decoration-none" > <button type="button" class="btn btn-primary btn-sm">Needed Blood</button></a> </tr>
-              <tr><a href="./Certificate" class="text-decoration-none" > <button type="button" class="btn btn-primary btn-sm">Download Blood donation Certificate</button></a> </tr>
+              <tr><td><a href="/home" class="text-decoration-none" > <button type="button" class="btn btn-primary btn-sm">Blood Stock Data</button></a> </td>
+              <td><a href="/DonorValidationData" class="text-decoration-none" > <button type="button" class="btn btn-primary btn-sm">Donate Blood</button></a> </td>
+              <td><a href="/Cart" class="text-decoration-none" > <button type="button" class="btn btn-primary btn-sm">Needed Blood</button></a> </td>
+              <td><a href="/Certificate" class="text-decoration-none" > <button type="button" class="btn btn-primary btn-sm">Download Blood donation Certificate</button></a></td> </tr>
             </tbody>
 
           )
         } else if (this.state.user.role === c) {
           return (
             button = <tbody>
-              <tr><a href="./Home" class="text-decoration-none" > <button type="button" class="btn btn-primary btn-sm">Blood Stock Data</button></a> </tr>
-              <tr><a href="./BloodTestLog" class="text-decoration-none" > <button type="button" class="btn btn-primary btn-sm">Blood Test Log</button></a> </tr>
+              <tr><td><a href="/home" class="text-decoration-none" > <button type="button" class="btn btn-primary btn-sm">Blood Stock Data</button></a> </td>
+              <td><a href="/BloodTestLog" class="text-decoration-none" > <button type="button" class="btn btn-primary btn-sm">Blood Test Log</button></a></td> </tr>
             </tbody>
           )
         }
         else {
           return (
             button = <tbody>
-              <tr><a href="./Home" class="text-decoration-none" > <button type="button" class="btn btn-primary btn-sm">Blood Stock Data</button></a> </tr>
-              <tr><a href="./BloodTestLogData" class="text-decoration-none" > <button type="button" class="btn btn-primary btn-sm">Blood Test Log Data</button></a> </tr>
-              <tr><a href="./BloodValidationData" class="text-decoration-none" > <button type="button" class="btn btn-primary btn-sm">Blood Validation Data</button></a> </tr>
+              <tr><td><a href="/home" class="text-decoration-none" > <button type="button" class="btn btn-primary btn-sm">Blood Stock Data</button></a> </td>
+              <td><a href="./BloodTestLogData" class="text-decoration-none" > <button type="button" class="btn btn-primary btn-sm">Blood Test Log Data</button></a> </td>
+              <td><a href="./DonorValidationData" class="text-decoration-none" > <button type="button" class="btn btn-primary btn-sm">Blood Validation Data</button></a></td></tr>
             </tbody>
           )
         }

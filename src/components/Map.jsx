@@ -8,6 +8,7 @@ const mapStyles = {
 
 export class MapContainer extends Component {
   render() {
+
     return (
       <div>
         <h6>In Case of Emergrncy</h6>
@@ -17,9 +18,10 @@ export class MapContainer extends Component {
         style={mapStyles}
         initialCenter={
           {
-            lat: 19.259743587704815,
-            lng: 76.77315026510901
+            lat: 19.160473,
+            lng: 77.306946
           }
+      
         }
       />
       </div>
