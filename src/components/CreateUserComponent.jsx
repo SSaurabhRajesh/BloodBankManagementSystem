@@ -48,7 +48,7 @@ class CreateUserComponent extends Component {
     UserService.createUser(user).then((response) =>{
         
         console.log('user data added successfully',response.data);  
-        this.props.history.push("/Login");    
+        window.location.replace("/Login");  
     });
     }
     
@@ -116,7 +116,7 @@ changeSubscribeHandler= (event) =>{this.setState({subscribe: event.target.value}
                                             </td>
                                             <td>
                                                 Password:
-                                                <input type="text" name="password" id="password" required minlength="5" 
+                                                <input type="password" name="password" id="password" required minlength="5" 
                                                 value={this.state.password} onChange={this.changePasswordHandler}/>
                                             </td>
                                             <td>

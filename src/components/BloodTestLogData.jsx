@@ -15,7 +15,9 @@ class BloodTestLogData extends Component {
           console.log(res.data);
         });
       }
+
     render() {
+      
         return (
             <div>
                     <h2 className='text-center'>Blood Test Log Data</h2>
@@ -48,6 +50,7 @@ class BloodTestLogData extends Component {
                    </tbody>
                  </table>
                </div>
+
             </div>
         );
     }

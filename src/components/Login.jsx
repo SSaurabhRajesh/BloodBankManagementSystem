@@ -1,40 +1,35 @@
 import React, { Component } from 'react';
 import UserService from '../services/UserService';
-import { createBrowserHistory } from "history";
-
-
 
 class Login extends Component {
-    constructor(props) {
+        constructor(props) {
         super(props)
         this.state = {
-            username:'',
-            password:''
-
-
-
+            user:{}
         }
         this.usernameHandler = this.usernameHandler.bind(this);
         this.passwordHandler = this.passwordHandler.bind(this);
-      
     }
 
     Login=(u)=>{u.preventDefault();
-        let login={ username:this.state.username,password:this.state.password};
-    console.log((JSON.stringify(login)));
-    UserService.getUserById(this.state.username).then(
+    UserService.getLogin(this.state.username,this.state.password).then(
         res =>{
-            const history = createBrowserHistory({ window });
-            this.state.history.push('/User',res.data); 
-        }
-    );
+            let user1=res.data;
+            console.log(user1);
+            localStorage.setItem('userData',JSON.stringify(user1));
+            //  this.state.history.push('/user');
+            window.location.replace("/user");
+
+
+            // logout val
+            // localStorage.removeItem("loggedinuser");
+
+        });
     }
 
     usernameHandler = (event) => { this.setState({ username: event.target.value }); }
     passwordHandler = (event) => { this.setState({ password: event.target.value }); }
   
-
-
     render() {
         return (
             <div>

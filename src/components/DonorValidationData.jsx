@@ -49,8 +49,7 @@ class DonorValidationData extends Component {
                      </tr>
                    </thead>
                    <tbody>
-                     {
-                       this.state.DValData.map(
+                     { this.state.DValData.map(
                         DValData=>
                          <tr key={DValData.id}>
                            <td>{DValData.id}</td>
@@ -82,9 +81,9 @@ class DonorValidationData extends Component {
                    </tbody>
                  </table>
                </div>
+               <button onClick={window.print()}>Print</button>
           </div>
         );
     }
 }
-
 export default DonorValidationData;

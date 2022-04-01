@@ -32,7 +32,7 @@ function App() {
           <Route path="/users" exact element={<ListUsers/>}/>
           <Route path="/CreateUserComponent" exact element={<CreateUserComponent/>}/>
           <Route path="/map" exact element={<Map/>}/>
-          <Route path="/user/:id" exact element={<User/>}/>
+          <Route path="/user" exact element={<User/>}/>
           <Route path="/Login" exact element={<Login/>}/>
           <Route path="/Certificate" exact element={<Certificate/>}/>
           <Route path="/ForgotP" exact element={<ForgotP/>}/>

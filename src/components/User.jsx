@@ -1,23 +1,21 @@
 import React, { Component } from 'react';
-import UserService from '../services/UserService';
 
 
 class User extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      id: 2,
-      user: []
+
+      user:{}
+
     }
-
   }
-  componentDidMount() {
-    UserService.getUserById(this.state.id).then(res => {
-      this.setState({ user: res.data });
-    })
-  }
-
   render() {
+
+    let data=localStorage.getItem('userData');
+    this.state.user=JSON.parse(data);
+    console.log(this.state.user)
+
     let button;
     {
       (() => {
@@ -35,7 +33,7 @@ class User extends Component {
               <td><a href="/BloodTestLogData" class="text-decoration-none" > <button type="button" class="btn btn-primary btn-sm">Blood Test Log Data</button></a></td> </tr>
             </tbody>
           )
-        } else if (this.state.user.role === b) {
+        } else if (this.state.role === b) {
           return (
             button = <tbody>
               <tr><td><a href="/home" class="text-decoration-none" > <button type="button" class="btn btn-primary btn-sm">Blood Stock Data</button></a> </td>
@@ -45,7 +43,7 @@ class User extends Component {
             </tbody>
 
           )
-        } else if (this.state.user.role === c) {
+        } else if (this.state.role === c) {
           return (
             button = <tbody>
               <tr><td><a href="/home" class="text-decoration-none" > <button type="button" class="btn btn-primary btn-sm">Blood Stock Data</button></a> </td>
