@@ -6,6 +6,9 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,26 +30,42 @@ import com.app.repository.UserRepository;
 public class UserController {
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private MailService notificationService;
+
 	//get all users
 	@GetMapping("/user")
 	public List<User>getAllUser(){
 		return userRepository.findAll();
 	}
+	
 	//create user rest api
 	@PostMapping("/user")
 	public User createUser(@RequestBody User user) {
+		String encodedPassword=new BCryptPasswordEncoder().encode(user.getPassword());
+		user.setPassword(encodedPassword);
+		notificationService.sendEmail(user);
 		User retUser=userRepository.save(user);
 		return retUser;
 	}
+		
 	//get user by id rest api
 	@GetMapping("/user/{id}")
 	public ResponseEntity<User> getUserById(@PathVariable Long id) {
 		User user=userRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("User Not Exist with Id="+id));
 		return ResponseEntity.ok(user);
 	}
-	//update user rest api
+	
+	@GetMapping("/user/{username}/{password}")
+	public ResponseEntity<User> getUserById(@PathVariable String username,@PathVariable String password) {
+		User user=userRepository.findByUsernameAndPassword(username,password).orElseThrow(()->new ResourceNotFoundException("User Not Exist with Username="+username+"and Password"+password));
+		return ResponseEntity.ok(user);
+	}
+	
+	//update user rest-api
 	@PutMapping("/user/{id}")
-	public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User userDetails){
+	public ResponseEntity <User> updateUser(@PathVariable Long id, @RequestBody User userDetails){
 		User user=userRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("User Not Exist with Id="+id));
 		user.setAddress(userDetails.getAddress());
 		user.setBlood_group(userDetails.getBlood_group());
@@ -57,7 +76,8 @@ public class UserController {
 		user.setFname(userDetails.getFname());
 		user.setMname(userDetails.getMname());
 		user.setLname(userDetails.getLname());
-		user.setPassword(userDetails.getPassword());
+		String encodedPassword=new BCryptPasswordEncoder().encode(userDetails.getPassword());
+		user.setPassword(encodedPassword);
 		user.setSubscribe(userDetails.getSubscribe());
 		user.setRole(userDetails.getRole());
 		user.setDepartment(userDetails.getDepartment());
