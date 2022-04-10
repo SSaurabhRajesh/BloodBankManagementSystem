@@ -61,7 +61,7 @@ public class DValidation {
 	@Column(name="q22")
 	private boolean q22;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name = "userid")
 	private User user;
 	

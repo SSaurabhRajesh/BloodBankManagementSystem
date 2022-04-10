@@ -36,10 +36,10 @@ public class BloodStockController {
 			return ResponseEntity.ok(bl);
 		}
 		
-	@PutMapping("bloodgroup/{bloodgrp}")
-	public ResponseEntity<BloodStock> updateBloodStock(@PathVariable String bloodgrp,@RequestBody BloodStock bloodStockDetails ){
+	@PutMapping("bloodgroup/{bloodgrp}/{qty}")
+	public ResponseEntity<BloodStock> updateBloodStock(@PathVariable String bloodgrp,@PathVariable int qty){
 		BloodStock bloodstock=bloodStockRepository.findById(bloodgrp).orElseThrow(()->new ResourceNotFoundException("User Not Exist with Id="+bloodgrp));
-	bloodstock.setQuantity(bloodStockDetails.getQuantity());
+	bloodstock.setQuantity(qty);
 	BloodStock updatedStock=bloodStockRepository.save(bloodstock);
 	return ResponseEntity.ok(updatedStock);
 	}

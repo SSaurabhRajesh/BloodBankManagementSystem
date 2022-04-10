@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,6 +34,8 @@ public class UserController {
 	
 	@Autowired
 	private MailService notificationService;
+	
+	private final PasswordEncoder passwordEncoder=new BCryptPasswordEncoder();
 
 	//get all users
 	@GetMapping("/user")
@@ -59,7 +62,18 @@ public class UserController {
 	
 	@GetMapping("/user/{username}/{password}")
 	public ResponseEntity<User> getUserById(@PathVariable String username,@PathVariable String password) {
-		User user=userRepository.findByUsernameAndPassword(username,password).orElseThrow(()->new ResourceNotFoundException("User Not Exist with Username="+username+"and Password"+password));
+		User user=userRepository.findByUsername(username);
+		User user1=null;
+		if (!passwordEncoder.matches(password,user.getPassword())) {
+			return ResponseEntity.ok(user1);
+		}
+//		User user=userRepository.findByUsernameAndPassword(username,encodedPassword).orElseThrow(()->new ResourceNotFoundException("User Not Exist with Username="+username+"and Password"+password));
+		return ResponseEntity.ok(user);
+	}
+	
+	@PutMapping("/user/{email}/{mobile}")
+	public ResponseEntity<User> getUserByEmail(@PathVariable String email,@PathVariable long mobile){
+		User user = userRepository.findByEmailAndMobile(email, mobile);
 		return ResponseEntity.ok(user);
 	}
 	

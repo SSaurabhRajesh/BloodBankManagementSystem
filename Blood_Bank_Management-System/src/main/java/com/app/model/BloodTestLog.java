@@ -28,7 +28,7 @@ public class BloodTestLog {
 	@Column(name="maleria")
 	private Boolean maleria;
 	
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name="userid")
 	private User user;
 	
