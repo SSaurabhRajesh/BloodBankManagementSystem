@@ -62,8 +62,9 @@ class DonorValidation extends Component {
     console.log((JSON.stringify(dval)));
     
     DonorValidationService.createDVal(dval).then((response) =>{
-        console.log('user data added successfully',response.data);  
-        // this.props.history.push("/User");    
+        console.log('user data added successfully',response.data);
+        alert("We will call you within an hour");  
+        window.location.replace("/user");    
     });
     }
     

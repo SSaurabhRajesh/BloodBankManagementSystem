@@ -16,14 +16,8 @@ class Login extends Component {
         res =>{
             let user1=res.data;
             console.log(user1);
-            localStorage.setItem('userData',JSON.stringify(user1));
-            //  this.state.history.push('/user');
+            sessionStorage.setItem('userData',JSON.stringify(user1));
             window.location.replace("/user");
-
-
-            // logout val
-            // localStorage.removeItem("loggedinuser");
-
         });
     }
 
@@ -34,23 +28,23 @@ class Login extends Component {
         return (
             <div>
                 <form onSubmit={this.Login}>
-                    <div class=" card container-sm" >
-                        <div class="form-group ">
-                            <label for="username">Username:</label>
+                    <div class=" card container-sm" style={{width:"40%"}} >
+                        <div class="form-group" style={{width:"70%"}}>
+                            <label for="username"><strong>Username:</strong></label>
                             <input type="username" class="form-control" id="username" required
                                 value={this.state.username} onChange={this.usernameHandler} />
                         </div>
-                        <div class="form-group">
-                            <label for="pwd">Password:</label>
+                        <div class="form-group"style={{width:"70%"}}>
+                            <label for="pwd"><strong>Password:</strong></label>
                             <input type="password" class="form-control" id="pwd" required
                                 value={this.state.password} onChange={this.passwordHandler} />
                         </div>
                         <div class="checkbox">
-                            <label><input type="checkbox" /> Remember me</label>
+                            <label><input type="checkbox" /><strong>Remember me</strong> </label>
                         </div>
                         <a href="ForgotP">Forgot Password?</a>
                         <a href="CreateUSerComponent">Create New Account</a>
-                        <span><input type="submit" class="btn btn-outline-success w-25 p-4" value="Submit" /></span>
+                        <span><input type="submit" class="btn btn-outline-success" value="Submit" /></span>
                     </div>
                 </form>
             </div>

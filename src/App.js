@@ -18,6 +18,9 @@ import DonorValidationData from './components/DonorValidationData';
 import ForgotP from './components/ForgotPasswordComponent'; 
 import Cart from './components/Cart';
 import Payment from './components/Payment';
+import CreateUserAdmin from './components/CreateUserAdmin';
+import UpdateUser from './components/UpdateUser';
+import Map1 from './components/Map1';
 
 
 function App() {
@@ -26,22 +29,25 @@ function App() {
       <HeaderComponent/>
       <BrowserRouter>
          <Routes>
-          <Route path="/Home" exact element={<Homepage/>}/>
+          <Route path="/" exact element={<Homepage/>}/>
           <Route path="/about" exact element={<About/>}/>
           <Route path="/contact" exact element={<Contact/>}/>
           <Route path="/users" exact element={<ListUsers/>}/>
           <Route path="/CreateUserComponent" exact element={<CreateUserComponent/>}/>
+          <Route path="/CreateUserAdmin" exact element={<CreateUserAdmin/>}/>
           <Route path="/map" exact element={<Map/>}/>
           <Route path="/user" exact element={<User/>}/>
           <Route path="/Login" exact element={<Login/>}/>
           <Route path="/Certificate" exact element={<Certificate/>}/>
           <Route path="/ForgotP" exact element={<ForgotP/>}/>
           <Route path="/Cart" exact element={<Cart/>}/>
+          <Route path="/UpdateUser" exact element={<UpdateUser/>}/>
           <Route path="/Payment" exact element={<Payment/>}/>
           <Route path="/BloodTestLog" exact element={<BloodTestLog/>}/>
           <Route path="/BloodTestLogData" exact element={<BloodTestLogData/>}/>
           <Route path="/DonorValidation" exact element={<DonorValidation/>}/>
           <Route path="/DonorValidationData" exact element={<DonorValidationData/>}/>
+          {/* <Route path="/Map1" exact element={<Map1/>}/>         */}
          </Routes>
       </BrowserRouter>
       <FooterComponents/>

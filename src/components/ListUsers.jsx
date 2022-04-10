@@ -8,28 +8,49 @@ class ListUsers extends Component {
   constructor(props){
     super(props)
     this.state={
-      user:[]
+      user:[],
+      idd:''
     }
-    // this.addUser=this.addUser.bind(this); 
     
+    this.changeIddHandler=this.changeIddHandler.bind(this);
+    this.editUser=this.editUser.bind(this);
   }
+
+  editUser(id){
+    sessionStorage.setItem('idu',JSON.stringify(id));
+    window.location.replace("/UpdateUser");  
+    // this.props.history.push(`/UpdateUser/${id}`);
+  }
+
   componentDidMount(){
     UserService.getUsers().then((res) => {
       this.setState({user:res.data});
     });
   }
   
-deluser(id){
-  UserService.deluser(id).then((res) => {
-   console.log(res.data)
+deluser=()=>{
+  alert("in del user "+this.state.idd);
+  UserService.deluser(this.state.idd).then(res => {
+    console.log("User deleted Successfully",res.data);
+    alert("User Deleted Successfully!!!");
+    // window.location.replace("/users")
   });
 }
+
+
+changeIddHandler=(event)=>{this.setState({idd:event.target.value});}
 
   render() {
     return (
       <div>
          <div>
-                 <a href="CreateUserComponent"><button type="button" className="btn btn-primary">Add User</button></a>
+         <a href="CreateUserAdmin"><button type="button" className="btn btn-primary">Add User</button></a>&nbsp;&nbsp;&nbsp;
+         <form onSubmit={this.deluser}>
+        <label> Enter Id : </label>
+        <input type="number" value={this.state.idd} onChange={this.changeIddHandler}/>
+        <button type="submit" className="btn btn-primary" value="submit" onClick={this.deluser}>Delete User</button>
+     </form>
+         
                  </div>
        <h2 className='text-center'>Users List</h2>
                <div className='row' style={{margin :"20px"}}>
@@ -49,7 +70,7 @@ deluser(id){
                        <th>Age</th>
                        <th>Department</th>
                        <th>Role</th>
-                       <th>Actions</th>
+                       <th>Action</th>
                      </tr>
                    </thead>
                    <tbody>
@@ -70,10 +91,7 @@ deluser(id){
                            <td>{user.age}</td>
                            <td>{user.department}</td>
                            <td>{user.role}</td>
-                           <td>
-
-                           <td><button style={{marginLeft:"10px"}} onClick={this.deluser(user.id)} className='btn btn-info'>Delete</button></td>
-                           </td>
+                           <td><button onClick={()=>this.editUser(user.id)} className='btn btn-outline-success'> Update</button></td>
                          </tr>
                        )
                      }

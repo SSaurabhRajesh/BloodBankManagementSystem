@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import UserService from '../services/UserService';
 
-
-
-class CreateUserComponent extends Component {
+class UpdateUser extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            id:'',
             role:'',
             fname:'',
             mname:'',
@@ -38,17 +37,42 @@ class CreateUserComponent extends Component {
         this.changeNumberHandler=this.changeNumberHandler.bind(this);
         this.changeEmailHandler=this.changeEmailHandler.bind(this);
         this.changeSubscribeHandler=this.changeSubscribeHandler.bind(this);
-        this.saveUser=this.saveUser.bind(this);
+        this.updateUser=this.updateUser.bind(this);
         
     }
-    saveUser=(u)=>{u.preventDefault();
+
+    componentDidMount(){
+        this.state.id=sessionStorage.getItem('idu');
+        console.log(this.state.id);
+        UserService.getUserById(this.state.id).then((res)=>{
+            console.log(res.data);
+            let user=res.data;
+            this.setState({
+            role:user.role,
+            fname:user.fname,
+            mname:user.mname,
+            lname:user.lname,
+            username:user.username,
+            password:user.password,
+            gender:user.gender,
+            age:user.age,
+            blood_group:user.blood_group,
+            address:user.address,
+            department:user.department,
+            mobile:user.mobile,
+            email:user.email,
+            subscribe:user.subscribe
+        })
+        });
+    }
+
+    updateUser=(e)=>{e.preventDefault();
         let user={ role:this.state.role,fname:this.state.fname,mname:this.state.mname,lname:this.state.lname,username:this.state.username,password:this.state.password,gender:this.state.gender,age:this.state.age,blood_group:this.state.blood_group,address:this.state.address,department:this.state.department,mobile:this.state.mobile,email:this.state.email,subscribe:this.state.subscribe};
     console.log((JSON.stringify(user)));
     
-    UserService.createUser(user).then((response) =>{
-        
-        console.log('user data added successfully',response.data);  
-        window.location.replace("/Login");  
+    UserService.updateUser(user,this.state.id).then((response) =>{
+        console.log('user data Updated successfully',response.data);  
+        window.location.replace("/users");  
     });
     }
     
@@ -76,9 +100,9 @@ changeSubscribeHandler= (event) =>{this.setState({subscribe: event.target.value}
                       <div className="container">
                     <div className="row">
                         <div className="card col-md-7 offset-md-3">
-                            <h3 className='text-center'>Register User</h3>
+                            <h3 className='text-center'>Update User</h3>
                             <div className="card-body">
-                                <form onSubmit={this.saveUser}>
+                                <form onSubmit={this.updateUser}>
                                     <table className='row-md-7'>
                                         <tr>
                                             <td>
@@ -117,7 +141,7 @@ changeSubscribeHandler= (event) =>{this.setState({subscribe: event.target.value}
                                             </td>
                                             <td>
                                                 Password:
-                                                <input type="password" name="password" id="password" required minlength="5" 
+                                                <input type="password" name="password" id="password" disabled minlength="5" 
                                                 value={this.state.password} onChange={this.changePasswordHandler}/>
                                             </td>
                                             <td>
@@ -185,7 +209,7 @@ changeSubscribeHandler= (event) =>{this.setState({subscribe: event.target.value}
                                                 <label for="No" ><input type="radio" name="Subscribe" id="Subscribe" checked={this.state.subscribe === "false"} value="false" onChange={this.changeSubscribeHandler}/>No</label>
                                             </td>
                                             <td>
-                                                <button type="submit" class="btn btn-outline-success" >SUBMIT</button>
+                                                <button type="submit" class="btn btn-outline-success" >Update User</button>
                                             </td>
                                         </tr>
 
@@ -200,4 +224,4 @@ changeSubscribeHandler= (event) =>{this.setState({subscribe: event.target.value}
     }
 }
 
-export default CreateUserComponent;
+export default UpdateUser;

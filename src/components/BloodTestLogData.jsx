@@ -13,6 +13,8 @@ class BloodTestLogData extends Component {
         BloodTestLogService.getBloodTestLogs().then((res) => {
           this.setState({btlog:res.data});
           console.log(res.data);
+        }).then(()=>{
+          window.print();
         });
       }
 

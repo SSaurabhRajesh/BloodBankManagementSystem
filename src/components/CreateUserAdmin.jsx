@@ -3,7 +3,7 @@ import UserService from '../services/UserService';
 
 
 
-class CreateUserComponent extends Component {
+class CreateUserAdmin extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -48,7 +48,7 @@ class CreateUserComponent extends Component {
     UserService.createUser(user).then((response) =>{
         
         console.log('user data added successfully',response.data);  
-        window.location.replace("/Login");  
+        window.location.replace("/users");  
     });
     }
     
@@ -76,7 +76,7 @@ changeSubscribeHandler= (event) =>{this.setState({subscribe: event.target.value}
                       <div className="container">
                     <div className="row">
                         <div className="card col-md-7 offset-md-3">
-                            <h3 className='text-center'>Register User</h3>
+                            <h3 className='text-center'>Create User</h3>
                             <div className="card-body">
                                 <form onSubmit={this.saveUser}>
                                     <table className='row-md-7'>
@@ -200,4 +200,4 @@ changeSubscribeHandler= (event) =>{this.setState({subscribe: event.target.value}
     }
 }
 
-export default CreateUserComponent;
+export default CreateUserAdmin;

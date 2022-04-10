@@ -10,53 +10,63 @@ class User extends Component {
 
     }
   }
+
+  Logout=()=>{
+    sessionStorage.removeItem("userData");
+    console.log("Logout successfull");
+    alert("Thank you Visit Again !!!");
+    window.location.replace("/");
+}
+
   render() {
 
-    let data=localStorage.getItem('userData');
+    let data=sessionStorage.getItem('userData');
     this.state.user=JSON.parse(data);
     console.log(this.state.user)
 
     let button;
     {
       (() => {
-        let a = "ADMIN";
-        let b = "USER";
-        let c = "LABASSISTANT";
-        console.log(this.state.user.role, a, b, c);
+        let rol=this.state.user.role;
+        console.log(rol);
 
-        if (this.state.user.role === a) {
+        if (rol === "ADMIN") {
           return (
             button = <tbody>
-              <tr><td><a href="/home" class="text-decoration-none" > <button type="button" class="btn btn-primary btn-sm">Blood Stock Data</button></a> </td>
-              <td><a href="/DonorValidationData" class="text-decoration-none" > <button type="button" class="btn btn-primary btn-sm">Donor Validation Data</button></a> </td>
-              <td><a href="/users" class="text-decoration-none" > <button type="button" class="btn btn-primary btn-sm">User Details Data</button></a> </td>
-              <td><a href="/BloodTestLogData" class="text-decoration-none" > <button type="button" class="btn btn-primary btn-sm">Blood Test Log Data</button></a></td> </tr>
+              <tr><td><a href="/home" class="text-decoration-none" > <button type="button" class="btn btn-outline-primary">Blood Stock Data</button></a> </td>
+              <td><a href="/DonorValidationData" class="text-decoration-none" > <button type="button" class="btn btn-outline-warning">Donor Validation Data</button></a> </td>
+              <td><a href="/users" class="text-decoration-none" > <button type="button" class="btn btn-outline-success">User Details Data</button></a> </td>
+              <td><a href="/BloodTestLogData" class="text-decoration-none" > <button type="button" class="btn btn-outline-secondary">Blood Test Log Data</button></a></td>
+              <td><button type="button" class="btn btn-primary btn-sm" onClick={this.Logout}>Logout</button></td> </tr>
             </tbody>
           )
-        } else if (this.state.role === b) {
+        } else if (rol === "USER") {
           return (
             button = <tbody>
-              <tr><td><a href="/home" class="text-decoration-none" > <button type="button" class="btn btn-primary btn-sm">Blood Stock Data</button></a> </td>
-              <td><a href="/DonorValidationData" class="text-decoration-none" > <button type="button" class="btn btn-primary btn-sm">Donate Blood</button></a> </td>
-              <td><a href="/Cart" class="text-decoration-none" > <button type="button" class="btn btn-primary btn-sm">Needed Blood</button></a> </td>
-              <td><a href="/Certificate" class="text-decoration-none" > <button type="button" class="btn btn-primary btn-sm">Download Blood donation Certificate</button></a></td> </tr>
+              <tr><td><a href="/home" class="text-decoration-none" > <button type="button" class="btn btn-outline-primary">Blood Stock Data</button></a> </td>
+              <td><a href="/DonorValidation" class="text-decoration-none" > <button type="button" class="btn btn-outline-warning">Donate Blood</button></a> </td>
+              <td><a href="/Cart" class="text-decoration-none" > <button type="button" class="btn btn-outline-success">Needed Blood</button></a> </td>
+              <td><a href="/Certificate" class="text-decoration-none" > <button type="button" class="btn btn-outline-secondary">Download Blood donation Certificate</button></a></td>
+              <td><button type="button" class="btn btn-primary btn-sm" onClick={this.Logout}>Logout</button></td> </tr>
             </tbody>
 
           )
-        } else if (this.state.role === c) {
+        } else if (rol === "LABASSISTANT") {
           return (
             button = <tbody>
-              <tr><td><a href="/home" class="text-decoration-none" > <button type="button" class="btn btn-primary btn-sm">Blood Stock Data</button></a> </td>
-              <td><a href="/BloodTestLog" class="text-decoration-none" > <button type="button" class="btn btn-primary btn-sm">Blood Test Log</button></a></td> </tr>
+              <tr><td><a href="/home" class="text-decoration-none" > <button type="button" class="btn btn-outline-primary">Blood Stock Data</button></a> </td>
+              <td><a href="/BloodTestLog" class="text-decoration-none" > <button type="button" class="btn btn-outline-warning">Blood Test Log</button></a></td>
+              <td><button type="button" class="btn btn-primary btn-sm" onClick={this.Logout}>Logout</button></td> </tr>
             </tbody>
           )
         }
         else {
           return (
             button = <tbody>
-              <tr><td><a href="/home" class="text-decoration-none" > <button type="button" class="btn btn-primary btn-sm">Blood Stock Data</button></a> </td>
-              <td><a href="./BloodTestLogData" class="text-decoration-none" > <button type="button" class="btn btn-primary btn-sm">Blood Test Log Data</button></a> </td>
-              <td><a href="./DonorValidationData" class="text-decoration-none" > <button type="button" class="btn btn-primary btn-sm">Blood Validation Data</button></a></td></tr>
+              <tr><td><a href="/home" class="text-decoration-none" > <button type="button" class="btn btn-outline-primary">Blood Stock Data</button></a> </td>
+              <td><a href="./BloodTestLogData" class="text-decoration-none" > <button type="button" class="btn btn-outline-warning">Blood Test Log Data</button></a> </td>
+              <td><a href="./DonorValidationData" class="text-decoration-none" > <button type="button" class="btn btn-outline-success">Blood Validation Data</button></a></td>
+              <td><button type="button" class="btn btn-primary btn-sm" onClick={this.Logout}>Logout</button></td></tr>
             </tbody>
           )
         }
@@ -64,7 +74,7 @@ class User extends Component {
     }
     return (
       <div>
-        <table className='card col-md-3 offset-sm-1  '>
+        <table className='card col-md-5 offset-sm-1  '>
           <tr> <td><h3>Profile</h3></td> </tr>
           <hr />
           <tr><td><div>Name: {this.state.user.fname} {this.state.user.mname} {this.state.user.lname}</div></td></tr>
@@ -78,10 +88,10 @@ class User extends Component {
           <tr><td><div>Department: {this.state.user.department}</div></td></tr>
           <tr><td><div>Number: {this.state.user.mobile}</div></td></tr>
           <tr><td><div>Email:{this.state.user.email}</div></td></tr>
-          <tr><td><div>Subscribed: {this.state.user.subscribe}</div></td></tr>
+          <tr><td><div>Subscribed: {this.state.user.subscribe.toString()}</div></td></tr>
         </table>
         <table className='card justify-content-right'>
-          <thead>Functionalities:</thead>
+          <thead><h3>Functionalities:</h3><br /></thead>
           {button}
         </table>
       </div>

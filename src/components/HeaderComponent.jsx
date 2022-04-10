@@ -7,24 +7,26 @@ class HeaderComponent extends Component {
     }
   }
   render() {
+
     return (
       <div>
         <header fixed="top">
-          <nav className='navbar navbar-expand-md navbar-danger bg-danger bg-gradient-light'>
-            <div><a href="./Home" class="navbar-brand" >New Life Blood Bank</a></div>
+          <nav className='navbar navbar-expand-md bg-info bg-info.bg-gradient'>
+            <div><a href="./" class="navbar-brand" style={{ color: "black" }} >New Life Blood Bank</a></div>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="./Home">Home</a>
+                <a class="nav-link active" aria-current="page" href="./" style={{ color: "black" }}>Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="./About">About</a>
+                <a class="nav-link active" aria-current="page" href="./About" style={{ color: "black" }}>About</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="./Contact">Contact Us</a>
+                <a class="nav-link active" aria-current="page" href="./Contact" style={{ color: "black" }}>Contact Us</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="./Login">Login</a>
+                <a class="nav-link active" aria-current="page" href="./Login" style={{ color: "black" }}>Login</a>
               </li>
+
             </ul>
           </nav>
 

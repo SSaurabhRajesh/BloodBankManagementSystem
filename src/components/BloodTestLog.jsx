@@ -25,7 +25,9 @@ class BloodTestLog extends Component {
     
     BloodTestLogService.createBloodTestLog(bloodtestlog).then((response) =>{
         
-        console.log('user data added successfully',response.data);  
+        console.log('user data added successfully',response.data); 
+        alert("Data Uploaded Successfully");
+        window.location.replace("/BlooTestLog"); 
     });
     }
     changeHepatitisBHandler=(event)=>{this.setState({hepatitisb:event.target.value});}

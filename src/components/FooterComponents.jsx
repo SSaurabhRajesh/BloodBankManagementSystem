@@ -8,9 +8,9 @@ class FooterComponents extends Component {
       }
     render() {
         return (
-            <div fixed="bottom" style={{position:"relative", left:"0",right:"0", bottom:"0", padding:"25px"}}>
-                <footer className='footer bg-danger bg-gradient-light'>
-                &copy; <span className='text-muted'>All rights Reserved 2022 Saurabh and Shubham</span>
+            <div  style={{position:"absolute",float:"bottom", left:"0",right:"0", bottom:"0", padding:"0px"}}>
+                <footer className='footer bg-info bg-info.bg-gradient'>
+                &copy; <span className='text-dark'>All rights Reserved 2022 Saurabh and Shubham</span>
                 </footer>
             </div>
         );

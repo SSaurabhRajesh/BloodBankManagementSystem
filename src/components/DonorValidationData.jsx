@@ -12,7 +12,9 @@ class DonorValidationData extends Component {
         DonorValidationService.getDVal().then((res) => {
           this.setState({DValData:res.data});
           console.log(res.data);
-        });
+        }).then(()=>{
+          window.print();
+        });;
       }
 
     render() {
@@ -81,7 +83,6 @@ class DonorValidationData extends Component {
                    </tbody>
                  </table>
                </div>
-               <button onClick={window.print()}>Print</button>
           </div>
         );
     }

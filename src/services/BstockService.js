@@ -6,5 +6,13 @@ class BstockService{
     getBloodStock(){
         return axios.get(USER_API_BASE_URL);
     }
+
+    getBloodGroup(bloodgroup){
+        return axios.get(USER_API_BASE_URL+"/"+bloodgroup);
+    }
+
+    putBloodStock(bloodgroup,qty){
+        return axios.put(USER_API_BASE_URL+"/"+bloodgroup+"/"+qty)
+    }
 }
 export default new BstockService()
