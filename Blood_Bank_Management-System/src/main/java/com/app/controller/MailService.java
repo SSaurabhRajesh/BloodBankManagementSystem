@@ -21,9 +21,8 @@ public class MailService {
     	SimpleMailMessage mail = new SimpleMailMessage();
 		mail.setTo(user.getEmail());
 		mail.setSubject("Successful Sign Up!!");
-		mail.setText("Hurray ! \n Dear "+user.getFname()+"You have Successfully Signed Up");
+		mail.setText("Hurray ! \n Dear "+user.getFname()+" "+user.getLname()+" You have Successfully Signed Up");
 		javaMailSender.send(mail);
     }
-    
-
+   
 }

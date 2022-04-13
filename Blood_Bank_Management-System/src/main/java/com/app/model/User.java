@@ -1,8 +1,5 @@
 package com.app.model;
 
-
-import javax.persistence.CascadeType;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -10,9 +7,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
 @Entity
 @Table(name="user")
 public class User {
@@ -50,16 +46,8 @@ public class User {
 	@Column(name="role")
 	private Role role;
 	
-//	@OneToOne(cascade =CascadeType.ALL)
-//	@JoinColumn(name="btlid")
-//	private BloodTestLog bloodTestLog;
-	
-//	@OneToOne(cascade =CascadeType.ALL)
-//	@JoinColumn(name="brequest")
-//	private Request request;
 	
 	public User() {
-		// TODO Auto-generated constructor stub
 	}
 	public User(String fname,String mname,String lname, String gender, String blood_group, String address, String username, String password,
 			int mobile, String email, String department, int age, Boolean subscribe,Role role) {
@@ -172,18 +160,5 @@ public class User {
 	public void setRole(Role role) {
 		this.role = role;
 	}
-//	public BloodTestLog getBloodTestLog() {
-//		return bloodTestLog;
-//	}
-//	public void setBloodTestLog(BloodTestLog bloodTestLog) {
-//		this.bloodTestLog = bloodTestLog;
-//	}
-//	public Request getRequest() {
-//		return request;
-//	}
-//	public void setRequest(Request request) {
-//		this.request = request;
-//	}
-//	
 	
 }
