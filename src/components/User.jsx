@@ -21,8 +21,9 @@ class User extends Component {
   render() {
 
     let data=sessionStorage.getItem('userData');
+    console.log(data);
     this.state.user=JSON.parse(data);
-    console.log(this.state.user)
+    console.log(this.state.user);
 
     let button;
     {

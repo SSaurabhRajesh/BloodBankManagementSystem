@@ -167,7 +167,7 @@ changeSubscribeHandler= (event) =>{this.setState({subscribe: event.target.value}
                                             <td>
                                                 Mobile number:
                                                 <br />
-                                                <input type="number" name="Mobile" id="Mobile" required pattern="[0-9]{10}"
+                                                <input type="number" name="Mobile" id="Mobile" required pattern="[1-9]{1}[0-9]{9}" maxlength="10" minLength="10"
                                                 value={this.state.mobile} onChange={this.changeNumberHandler}/>
                                             </td>
                                             <td>

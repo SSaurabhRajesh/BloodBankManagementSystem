@@ -22,12 +22,11 @@ class BloodTestLog extends Component {
     saveBloodTestLog=(u)=>{u.preventDefault();
         let bloodtestlog={ hepatitisb:this.state.hepatitisb,hepatitisc:this.state.hepatitisc,hiv:this.state.hiv,syphilis:this.state.syphilis,maleria:this.state.maleria,userid:this.state.userid};
     console.log((JSON.stringify(bloodtestlog)));
-    
     BloodTestLogService.createBloodTestLog(bloodtestlog).then((response) =>{
         
         console.log('user data added successfully',response.data); 
         alert("Data Uploaded Successfully");
-        window.location.replace("/BlooTestLog"); 
+        window.location.replace("/BloodTestLog"); 
     });
     }
     changeHepatitisBHandler=(event)=>{this.setState({hepatitisb:event.target.value});}

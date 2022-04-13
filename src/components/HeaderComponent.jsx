@@ -26,6 +26,9 @@ class HeaderComponent extends Component {
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="./Login" style={{ color: "black" }}>Login</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="./User" style={{ color: "black" }}>Profile</a>
+              </li>
 
             </ul>
           </nav>
